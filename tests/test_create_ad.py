@@ -1,5 +1,5 @@
 from locators import MainPageLocators, AuthPageLocators, AdPageLocators
-from conftest import wait_element
+from helpers import generate_email, wait_element
 
 class TestCreateAd:
 
@@ -8,7 +8,8 @@ class TestCreateAd:
         modal = wait_element(driver, AdPageLocators.AUTH_REQUIRED_MODAL)
         assert modal.is_displayed()
 
-    def test_create_ad_authorized(self, driver, email):
+    def test_create_ad_authorized(self, driver):
+        email = generate_email()
         wait_element(driver, MainPageLocators.LOGIN_BUTTON).click()
         wait_element(driver, AuthPageLocators.NO_ACCOUNT_BUTTON).click()
         wait_element(driver, AuthPageLocators.EMAIL_INPUT).send_keys(email)
@@ -27,3 +28,4 @@ class TestCreateAd:
 
         ad = wait_element(driver, AdPageLocators.MY_ADS_BLOCK)
         assert ad.is_displayed()
+        

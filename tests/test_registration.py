@@ -1,10 +1,10 @@
-import pytest
 from locators import MainPageLocators, AuthPageLocators, ProfileLocators
-from conftest import wait_element
+from helpers import generate_email, wait_element
 
 class TestRegistration:
 
-    def test_registration_valid(self, driver, email):
+    def test_registration_valid(self, driver):
+        email = generate_email()
         wait_element(driver, MainPageLocators.LOGIN_BUTTON).click()
         wait_element(driver, AuthPageLocators.NO_ACCOUNT_BUTTON).click()
         wait_element(driver, AuthPageLocators.EMAIL_INPUT).send_keys(email)
@@ -35,3 +35,4 @@ class TestRegistration:
 
         error = wait_element(driver, AuthPageLocators.ERROR_MESSAGE).text
         assert error == "Ошибка"
+        

@@ -32,3 +32,4 @@ class AdPageLocators:
     PUBLISH_BUTTON = (By.XPATH, "//button[contains(text(),'Опубликовать')]")
     MY_ADS_BLOCK = (By.XPATH, "//div[contains(text(),'Мои объявления')]")
     AUTH_REQUIRED_MODAL = (By.XPATH, "//h1[contains(text(),'авторизуйтесь')]")
+    

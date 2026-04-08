@@ -1,10 +1,10 @@
 from locators import MainPageLocators, AuthPageLocators, ProfileLocators
-from conftest import wait_element
+from helpers import generate_email, wait_element
 
 class TestLogin:
 
-    def test_login(self, driver, email):
-
+    def test_login(self, driver):
+        email = generate_email()
         wait_element(driver, MainPageLocators.LOGIN_BUTTON).click()
         wait_element(driver, AuthPageLocators.NO_ACCOUNT_BUTTON).click()
         wait_element(driver, AuthPageLocators.EMAIL_INPUT).send_keys(email)
@@ -18,3 +18,4 @@ class TestLogin:
 
         user_name = wait_element(driver, ProfileLocators.USER_NAME).text
         assert user_name == "User"
+        
